@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <title>Szamolas</title>
+
+    <style>
+
+        .like{
+            display: none;
+        }
+        .dislike{
+            display: none;
+        }
+
+        .container{ 
+            text-align: center;
+            width: 450px;
+            height: 200px;
+            margin: auto;
+            border: solid 3px salmon;
+            border-radius: 90%;
+            background-color: azure;
+            color: darkred;
+            box-shadow: 5px 10px lightgray;
+        }
+        #bt{
+            margin: 5px;
+            padding: 5px;
+            width: 200px;
+            border-radius: 50%;
+            background-color: cyan;
+            color: darkred;
+        }
+        #ered{
+            width: 50px;
+        }
+
+    </style>
+
+</head>
+<body>
+    
+    <div class="container">
+
+        <h1>Jó vagy <br> fejszámolásban?</h1>
+
+        <input type="button" value="Új feladat!" id="bt" onclick="uj()">
+
+        <br>
+
+        <span id="szam1"></span>
+        <i class="fa-light fa-plus"></i>
+        <span id="szam2"></span>
+
+        <i class="fa-solid fa-equals"></i>
+        <input type="number" name="eredmeny" id="ered" onkeyup="osszead()">
+       
+        <br>
+
+        <i class="fa-solid fa-question qmark"></i>
+        <i class="fa-solid fa-thumbs-up like"></i>
+        <i class="fa-solid fa-thumbs-down dislike"></i>
+
+        
+        <script>
+
+
+
+            function uj(){
+
+            let random1 = Math.floor(Math.random()*100 +1 )
+            let random2 = Math.floor(Math.random()*100 +1 )
+
+            document.getElementById('szam1').innerHTML = random1
+            document.getElementById('szam2').innerHTML = random2
+
+            console.log(random1)
+            console.log(random2)
+
+            }
+
+                function osszead(){
+
+                let good = document.querySelector('.like')
+                let bad  = document.querySelector('.dislike')
+                let mark = document.querySelector('.qmark')
+
+                let vegeredmeny = document.getElementById('ered').value
+                let num1 = +document.getElementById('szam1').innerHTML;
+                let num2 = +document.getElementById('szam2').innerHTML
+                
+                let osszeg = num1 + num2
+
+                console.log(vegeredmeny)
+                console.log(osszeg)
+
+                if(vegeredmeny == osszeg){
+/*
+                    document.querySelector('like').style.display = "block"
+                    document.querySelector('dislike').style.display = "none"
+*/
+                    mark.classList.toggle('like')
+                    good.classList.toggle('like')
+
+                }
+                else{
+                    mark.classList.toggle('dislike')
+                    bad.classList.toggle('dislike')
+                    document.querySelector('like').style.display = "none"
+
+                  /*
+                    document.querySelector('dislike').style.display = "block"
+                    document.querySelector('like').style.display = "none"
+                  */
+                   
+                }
+                
+                
+
+            }
+
+        </script>
+
+    </div>
+
+
+</body>
+</html>
